@@ -1,13 +1,10 @@
 import { useField } from "formik";
-import React, { useEffect } from "react";
+import React from "react";
 
 const CustomInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
- useEffect(()=>{
-  
- },[])
   return (
-    <div className="mb-3 w-80 justify-between flex">
+    <div className="mb-10 justify-between flex">
       <label>{label}</label>
       <div>
         <input
@@ -16,7 +13,7 @@ const CustomInput = ({ label, ...props }) => {
           {...props}
         />
         {meta.error && meta.touched ? (
-          <p className="text-white text-center">{meta.error}</p>
+          <p className="text-red-500 text-center">{meta.error}</p>
         ) : null}
       </div>
     </div>

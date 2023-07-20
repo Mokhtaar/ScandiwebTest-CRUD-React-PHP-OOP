@@ -4,7 +4,7 @@ import React from "react";
 const CustomSelect = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
-    <div className="mb-3 w-80 justify-between flex">
+    <div className="mb-2 w-80 justify-between flex">
       <label>{label}</label>
       <div>
         <select

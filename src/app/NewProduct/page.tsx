@@ -4,8 +4,8 @@ import { Form, Formik, useFormikContext } from "formik";
 import * as yup from "yup";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import CustomInput from "../../../components/CustomInput";
-import CustomSelect from "../../../components/CustomSelect";
+import CustomInput from "../components/CustomInput";
+import CustomSelect from "../components/CustomSelect";
 import Link from "next/link";
 
 const FormObserver = ({ setType }) => {
@@ -77,7 +77,7 @@ const Page = () => {
               </div>
             </div>
             <div className="border my-5 border-black"></div>
-            <div>
+            <div className="w-80">
               <CustomInput
                 label="SKU"
                 name="SKU"
@@ -94,7 +94,6 @@ const Page = () => {
                 label="Price($)"
                 name="price"
                 type="number"
-                inputMode="numeric"
                 placeholder="#Price"
               />
             </div>
