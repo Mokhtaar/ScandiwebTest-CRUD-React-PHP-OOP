@@ -8,8 +8,12 @@ import CustomInput from "../components/CustomInput";
 import CustomSelect from "../components/CustomSelect";
 import Link from "next/link";
 
-const FormObserver = ({ setType }) => {
-  const { values } = useFormikContext();
+interface FormValues {
+  type: string;
+}
+
+const FormObserver = ({ setType }: { setType: any }) => {
+  const { values } = useFormikContext<FormValues>();
 
   useEffect(() => {
     setType(values.type);
@@ -111,7 +115,7 @@ const Page = () => {
                   label="Size(MB)"
                   name="size"
                   type="number"
-                  inputMode="numeric"
+                  
                   placeholder="#Size"
                 />
                 <p className="mt-3 font-semibold">
@@ -124,7 +128,7 @@ const Page = () => {
                   label="Weight(KG)"
                   name="weight"
                   type="number"
-                  inputMode="numeric"
+                  
                   placeholder="#Weight"
                 />
                 <p className="mt-3 font-semibold">
@@ -137,21 +141,21 @@ const Page = () => {
                   label="Height(CM)"
                   name="height"
                   type="number"
-                  inputMode="numeric"
+                  
                   placeholder="#Height"
                 />
                 <CustomInput
                   label="Width(CM)"
                   name="width"
                   type="number"
-                  inputMode="numeric"
+                  
                   placeholder="#Width"
                 />
                 <CustomInput
                   label="Length(CM)"
                   name="length"
                   type="number"
-                  inputMode="numeric"
+                  
                   placeholder="#Length"
                 />
                 <p className="mt-3 font-semibold">Please, provide dimensions</p>
