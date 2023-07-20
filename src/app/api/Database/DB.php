@@ -1,6 +1,6 @@
 <?php
 require_once('DBInterface.php');
-class MySQLDatabase implements Database
+class MySQLDatabase implements DBInterface
 {
     private $conn;
     public function __construct()

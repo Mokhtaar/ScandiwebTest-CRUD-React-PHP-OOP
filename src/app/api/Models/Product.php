@@ -1,10 +1,10 @@
 <?php
-require_once('DBInterface.php');
-require_once('DB.php');
+// require_once('../Database/DBInterface.php');
+require_once(__DIR__ . '/../Database/DBInterface.php');
 abstract class Product 
 {
     private $db;
-    public function __construct(Database $db)
+    public function __construct(DBInterface $db)
     {
         $this->db = $db;
     }

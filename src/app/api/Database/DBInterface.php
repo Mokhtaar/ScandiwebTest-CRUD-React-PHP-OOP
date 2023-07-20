@@ -1,6 +1,6 @@
 <?php
 
-interface Database
+interface DBInterface
 {
     public function connect();
     public function getAllProducts();
