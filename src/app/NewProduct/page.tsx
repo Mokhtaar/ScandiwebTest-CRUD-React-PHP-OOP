@@ -51,7 +51,7 @@ const Page = () => {
           onSubmit={(values) => {
             axios
               .post(
-                "http://localhost/crud_react_php/src/app/api/index.php",
+                "https://crud-react-php-mokhtaar.vercel.app",
                 values
               )
               .then((response) => {
