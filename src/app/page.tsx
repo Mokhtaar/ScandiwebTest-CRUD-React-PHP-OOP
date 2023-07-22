@@ -27,7 +27,7 @@ export default function Home() {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "https://crud-react-php-mokhtaar.vercel.app"
+        "https://scandiweb-test-crud-react-php-oop-17nh.vercel.app"
       );
       setProducts(response.data);
       console.log(response.data);
@@ -39,7 +39,7 @@ export default function Home() {
   const handleDelete = async (checkedProducts: string[]) => {
     try {
       const response = await axios.delete(
-        "https://crud-react-php-mokhtaar.vercel.app",
+        "https://scandiweb-test-crud-react-php-oop-17nh.vercel.app",
         { data: checkedProducts }
       );
       console.log("res", response);
