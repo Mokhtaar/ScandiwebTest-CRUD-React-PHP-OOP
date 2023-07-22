@@ -51,7 +51,7 @@ const Page = () => {
           onSubmit={(values) => {
             axios
               .post(
-                "https://scandiweb-test-crud-react-php-oop-17nh.vercel.app",
+                "https://crud-react-php-mokhtaar.vercel.app",
                 values
               )
               .then((response) => {

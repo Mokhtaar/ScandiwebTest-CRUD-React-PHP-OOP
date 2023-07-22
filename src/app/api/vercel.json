@@ -1,6 +1,6 @@
 {
   "functions": {
-    "src/app/api/app/page.php": {
+    "src/app/api/app/*.php": {
       "runtime": "vercel-php@0.3.3"
     }
   }
