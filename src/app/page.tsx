@@ -27,7 +27,7 @@ export default function Home() {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "https://crud-react-php-mokhtaar.vercel.app"
+        "http://localhost/crud_react_php/src/app/api/app/page.php"
       );
       setProducts(response.data);
       console.log(response.data);
@@ -39,7 +39,7 @@ export default function Home() {
   const handleDelete = async (checkedProducts: string[]) => {
     try {
       const response = await axios.delete(
-        "https://crud-react-php-mokhtaar.vercel.app",
+        "http://localhost/crud_react_php/src/app/api/app/page.php",
         { data: checkedProducts }
       );
       console.log("res", response);
