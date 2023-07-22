@@ -36,16 +36,21 @@ function handleRequest($database)
     }
 }
 
+echo 'hello';
+
 handleRequest(new MySQLDatabase());
+define("NAME", "MOKHTAR");
 
+?>
 
+<!DOCTYPE html>
+<html>
 
+<head>
+</head>
 
+<body>
+    <h1><?php echo NAME ?></h1>
+</body>
 
-// $databaseResponse = ['price' => 123,  'name' => 'hussein', 'profession' => 'developer'];
-// $book = new Book();
-// $book->setPrice($databaseResponse['price']);
-// $book->setName($databaseResponse['price']);
-// $book->setProfession($databaseResponse['price']);
-
-// return $book->getPrice();
+</html>

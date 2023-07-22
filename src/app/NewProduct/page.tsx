@@ -51,7 +51,7 @@ const Page = () => {
           onSubmit={(values) => {
             axios
               .post(
-                "https://crud-react-php-mokhtaar.vercel.app",
+                "https://backend-php-mokhtaar.vercel.app",
                 values
               )
               .then((response) => {
