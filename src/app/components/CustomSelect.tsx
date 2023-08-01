@@ -1,10 +1,11 @@
 import { useField } from "formik";
 import React, { FC } from "react";
 
-interface CustomInputProps  {
+interface CustomInputProps {
   label: string;
   name: string;
   placeholder: string;
+  id: string;
   children: React.ReactNode;
 }
 

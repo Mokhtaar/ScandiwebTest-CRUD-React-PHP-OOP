@@ -26,9 +26,7 @@ export default function Home() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(
-        "https://backend-php-oop.vercel.app"
-      );
+      const response = await axios.get("https://backend-php-oop.vercel.app");
       setProducts(response.data);
     } catch (error) {
       console.log(error);
@@ -106,7 +104,7 @@ export default function Home() {
                   <input
                     onChange={(event) => handleCheck(event, product.SKU)}
                     type="checkbox"
-                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 delete-checkbox"
                   />
                 </div>
                 <h3 className="text-sm font-medium text-gray-900">

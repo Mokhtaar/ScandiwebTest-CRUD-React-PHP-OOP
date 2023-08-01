@@ -104,8 +104,13 @@ const Page = () => {
                 placeholder="#Price"
               />
             </div>
-            <CustomSelect label="Type" name="type" placeholder="#type">
-              <option id="productType" disabled value="">
+            <CustomSelect
+              id="productType"
+              label="Type"
+              name="type"
+              placeholder="#type"
+            >
+              <option disabled value="">
                 Select a type
               </option>
               <option value="DVDdisc">DVD</option>
