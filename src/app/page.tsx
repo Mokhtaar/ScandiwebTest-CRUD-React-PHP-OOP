@@ -27,7 +27,7 @@ export default function Home() {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "https://backend-php-mokhtaar.vercel.app/"
+        "https://backend-php-oop.vercel.app"
       );
       setProducts(response.data);
     } catch (error) {
@@ -38,7 +38,7 @@ export default function Home() {
   const handleDelete = async (checkedProducts: string[]) => {
     try {
       const response = await axios.delete(
-        "https://backend-php-mokhtaar.vercel.app/",
+        "https://backend-php-oop.vercel.app",
         { data: checkedProducts }
       );
       console.log("res", response);
@@ -76,7 +76,7 @@ export default function Home() {
               href="./NewProduct/"
               className="bg-gray-300 hover:bg-gray-200 py-1 px-4 rounded-md"
             >
-              Add
+              ADD
             </Link>
             <button
               onClick={() => handleDelete(checkedProducts)}

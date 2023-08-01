@@ -48,17 +48,27 @@ const Page = () => {
               .oneOf(["DVDdisc", "Furniture", "Book"], "Invalid product type")
               .required("Required"),
           })}
-          onSubmit={(values) => {
-            axios
-              .post(
-                "https://backend-php-mokhtaar.vercel.app/",
+          // const fetchData = async () => {
+          //   try {
+          //     const response = await axios.get(
+          //       "https://backend-php-oop.vercel.app"
+          //     );
+          //     setProducts(response.data);
+          //   } catch (error) {
+          //     console.log(error);
+          //   }
+          // };
+          onSubmit={async (values) => {
+            try {
+              const response = await axios.post(
+                "https://backend-php-oop.vercel.app",
                 values
-              )
-              .then((response) => {
-                console.log(response.data);
-                router.push("/");
-              })
-              .catch((error) => console.log(error));
+              );
+              console.log(response.data);
+              router.push("/");
+            } catch (error) {
+              console.log(error);
+            }
           }}
         >
           <Form className="w-full">
