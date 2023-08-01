@@ -10,11 +10,11 @@ interface ProductList {
   name: string;
   type: string;
   price: number;
-  size: number;
-  weight: number;
-  length: number;
-  width: number;
-  height: number;
+  size: number | null;
+  weight: number | null;
+  length: number | null;
+  width: number | null;
+  height: number | null;
 }
 export default function Home() {
   const [products, setProducts] = useState<ProductList[]>([]);
@@ -27,10 +27,9 @@ export default function Home() {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "https://backend-php-mokhtaar.vercel.app"
+        "https://backend-php-mokhtaar.vercel.app/"
       );
       setProducts(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -39,7 +38,7 @@ export default function Home() {
   const handleDelete = async (checkedProducts: string[]) => {
     try {
       const response = await axios.delete(
-        "https://backend-php-mokhtaar.vercel.app",
+        "https://backend-php-mokhtaar.vercel.app/",
         { data: checkedProducts }
       );
       console.log("res", response);

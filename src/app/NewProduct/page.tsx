@@ -51,7 +51,7 @@ const Page = () => {
           onSubmit={(values) => {
             axios
               .post(
-                "https://backend-php-mokhtaar.vercel.app",
+                "https://backend-php-mokhtaar.vercel.app/",
                 values
               )
               .then((response) => {
@@ -115,7 +115,6 @@ const Page = () => {
                   label="Size(MB)"
                   name="size"
                   type="number"
-                  
                   placeholder="#Size"
                 />
                 <p className="mt-3 font-semibold">
@@ -128,7 +127,6 @@ const Page = () => {
                   label="Weight(KG)"
                   name="weight"
                   type="number"
-                  
                   placeholder="#Weight"
                 />
                 <p className="mt-3 font-semibold">
@@ -141,21 +139,18 @@ const Page = () => {
                   label="Height(CM)"
                   name="height"
                   type="number"
-                  
                   placeholder="#Height"
                 />
                 <CustomInput
                   label="Width(CM)"
                   name="width"
                   type="number"
-                  
                   placeholder="#Width"
                 />
                 <CustomInput
                   label="Length(CM)"
                   name="length"
                   type="number"
-                  
                   placeholder="#Length"
                 />
                 <p className="mt-3 font-semibold">Please, provide dimensions</p>
