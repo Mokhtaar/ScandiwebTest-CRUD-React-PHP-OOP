@@ -12,7 +12,7 @@ interface CustomInputProps {
 const CustomSelect: FC<CustomInputProps> = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
-    <div className="mb-2 w-80 justify-between flex">
+    <div className="mt-10 mb-5 w-80 justify-between flex">
       <label>{label}</label>
       <div>
         <select

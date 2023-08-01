@@ -81,7 +81,7 @@ const Page = () => {
               </div>
             </div>
             <div className="border my-5 border-black"></div>
-            <div className="w-80">
+            <div className="w-80 space-y-5">
               <CustomInput
                 id="sku"
                 label="SKU"
@@ -106,7 +106,7 @@ const Page = () => {
             </div>
             <CustomSelect
               id="productType"
-              label="Type"
+              label="Type switcher"
               name="type"
               placeholder="#type"
             >
@@ -127,7 +127,7 @@ const Page = () => {
                     type="number"
                     placeholder="#Size"
                   />
-                  <p className="mt-3 font-semibold">
+                  <p className="pt-7 font-semibold">
                     Please, provide disk space in MB
                   </p>
                 </>
@@ -140,12 +140,12 @@ const Page = () => {
                     type="number"
                     placeholder="#Weight"
                   />
-                  <p className="mt-3 font-semibold">
+                  <p className="pt-7 font-semibold">
                     Please, provide weight in Kg
                   </p>
                 </>
               ) : type === "Furniture" ? (
-                <div>
+                <div className="space-y-4">
                   <CustomInput
                     id="height"
                     label="Height(CM)"
@@ -167,8 +167,8 @@ const Page = () => {
                     type="number"
                     placeholder="#Length"
                   />
-                  <p className="mt-3 font-semibold">
-                    Please, provide dimensions
+                  <p className="pt-7 font-semibold">
+                    Please, provide dimensions in HxWxL
                   </p>
                 </div>
               ) : (
