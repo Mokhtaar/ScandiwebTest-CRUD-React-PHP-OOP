@@ -117,60 +117,64 @@ const Page = () => {
               <option value="Book">Book</option>
               <option value="Furniture">Furniture</option>
             </CustomSelect>
-            {type === "DVDdisc" ? (
-              <>
-                <CustomInput
-                  id="size"
-                  label="Size(MB)"
-                  name="size"
-                  type="number"
-                  placeholder="#Size"
-                />
-                <p className="mt-3 font-semibold">
-                  Please, provide disk space in MB
-                </p>
-              </>
-            ) : type === "Book" ? (
-              <>
-                <CustomInput
-                  id="weight"
-                  label="Weight(KG)"
-                  name="weight"
-                  type="number"
-                  placeholder="#Weight"
-                />
-                <p className="mt-3 font-semibold">
-                  Please, provide weight in Kg
-                </p>
-              </>
-            ) : type === "Furniture" ? (
-              <div>
-                <CustomInput
-                  id="height"
-                  label="Height(CM)"
-                  name="height"
-                  type="number"
-                  placeholder="#Height"
-                />
-                <CustomInput
-                  id="width"
-                  label="Width(CM)"
-                  name="width"
-                  type="number"
-                  placeholder="#Width"
-                />
-                <CustomInput
-                  id="length"
-                  label="Length(CM)"
-                  name="length"
-                  type="number"
-                  placeholder="#Length"
-                />
-                <p className="mt-3 font-semibold">Please, provide dimensions</p>
-              </div>
-            ) : (
-              ""
-            )}
+            <div className="w-80">
+              {type === "DVDdisc" ? (
+                <>
+                  <CustomInput
+                    id="size"
+                    label="Size(MB)"
+                    name="size"
+                    type="number"
+                    placeholder="#Size"
+                  />
+                  <p className="mt-3 font-semibold">
+                    Please, provide disk space in MB
+                  </p>
+                </>
+              ) : type === "Book" ? (
+                <>
+                  <CustomInput
+                    id="weight"
+                    label="Weight(KG)"
+                    name="weight"
+                    type="number"
+                    placeholder="#Weight"
+                  />
+                  <p className="mt-3 font-semibold">
+                    Please, provide weight in Kg
+                  </p>
+                </>
+              ) : type === "Furniture" ? (
+                <div>
+                  <CustomInput
+                    id="height"
+                    label="Height(CM)"
+                    name="height"
+                    type="number"
+                    placeholder="#Height"
+                  />
+                  <CustomInput
+                    id="width"
+                    label="Width(CM)"
+                    name="width"
+                    type="number"
+                    placeholder="#Width"
+                  />
+                  <CustomInput
+                    id="length"
+                    label="Length(CM)"
+                    name="length"
+                    type="number"
+                    placeholder="#Length"
+                  />
+                  <p className="mt-3 font-semibold">
+                    Please, provide dimensions
+                  </p>
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
           </Form>
         </Formik>
       </div>
