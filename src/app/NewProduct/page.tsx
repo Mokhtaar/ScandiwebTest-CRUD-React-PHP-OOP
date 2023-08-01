@@ -48,16 +48,6 @@ const Page = () => {
               .oneOf(["DVDdisc", "Furniture", "Book"], "Invalid product type")
               .required("Required"),
           })}
-          // const fetchData = async () => {
-          //   try {
-          //     const response = await axios.get(
-          //       "https://backend-php-oop.vercel.app"
-          //     );
-          //     setProducts(response.data);
-          //   } catch (error) {
-          //     console.log(error);
-          //   }
-          // };
           onSubmit={async (values) => {
             try {
               const response = await axios.post(
@@ -71,7 +61,7 @@ const Page = () => {
             }
           }}
         >
-          <Form className="w-full">
+          <Form id="product_form" className="w-full">
             <FormObserver setType={setType} />
             <div className="flex justify-between">
               <p className="text-2xl font-medium">Product list</p>
@@ -93,18 +83,21 @@ const Page = () => {
             <div className="border my-5 border-black"></div>
             <div className="w-80">
               <CustomInput
+                id="sku"
                 label="SKU"
                 name="SKU"
                 type="text"
                 placeholder="#SKU"
               />
               <CustomInput
+                id="name"
                 label="Name"
                 name="name"
                 type="text"
                 placeholder="#Name"
               />
               <CustomInput
+                id="price"
                 label="Price($)"
                 name="price"
                 type="number"
@@ -112,16 +105,17 @@ const Page = () => {
               />
             </div>
             <CustomSelect label="Type" name="type" placeholder="#type">
-              <option disabled value="">
+              <option id="productType" disabled value="">
                 Select a type
               </option>
-              <option value="DVDdisc">DVD-disc</option>
+              <option value="DVDdisc">DVD</option>
               <option value="Book">Book</option>
               <option value="Furniture">Furniture</option>
             </CustomSelect>
             {type === "DVDdisc" ? (
               <>
                 <CustomInput
+                  id="size"
                   label="Size(MB)"
                   name="size"
                   type="number"
@@ -134,6 +128,7 @@ const Page = () => {
             ) : type === "Book" ? (
               <>
                 <CustomInput
+                  id="weight"
                   label="Weight(KG)"
                   name="weight"
                   type="number"
@@ -146,18 +141,21 @@ const Page = () => {
             ) : type === "Furniture" ? (
               <div>
                 <CustomInput
+                  id="height"
                   label="Height(CM)"
                   name="height"
                   type="number"
                   placeholder="#Height"
                 />
                 <CustomInput
+                  id="width"
                   label="Width(CM)"
                   name="width"
                   type="number"
                   placeholder="#Width"
                 />
                 <CustomInput
+                  id="length"
                   label="Length(CM)"
                   name="length"
                   type="number"

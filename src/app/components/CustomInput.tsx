@@ -6,6 +6,7 @@ interface CustomInputProps  {
   name: string;
   type: string;
   placeholder: string;
+  id: string
 }
 
 const CustomInput: FC<CustomInputProps> = ({ label, ...props }) => {
