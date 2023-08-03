@@ -129,7 +129,7 @@ export default function Home() {
                   </h3>
                 ) : (
                   <h3 className="text-sm font-medium text-gray-900">
-                    Size: {product.size} MBs
+                    Size: {product.size} MB
                   </h3>
                 )}
               </div>
