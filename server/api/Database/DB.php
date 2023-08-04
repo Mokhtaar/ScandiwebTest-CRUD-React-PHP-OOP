@@ -69,6 +69,7 @@ class MySQLDatabase implements DBInterface
             $stmt->bindParam(':weight', $data['weight']);
             $stmt->execute();
             $this->handleAddProductResponse("Success");
+
         } catch (PDOException $e) {
             if ($e->getCode() === "23000") {
                 $this->handleAddProductResponse("Unique constraint violation");
@@ -104,7 +105,7 @@ class MySQLDatabase implements DBInterface
             $stmt = $this->conn->prepare($sql);
             $this->bindCommonProductProperties($stmt, $data);
             $stmt->bindParam(':size', $data['size']);
-
+            echo ("hamada");
             $stmt->execute();
             $this->handleAddProductResponse("Success");
         } catch (Exception $e) {
