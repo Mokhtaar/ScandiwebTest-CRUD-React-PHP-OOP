@@ -118,14 +118,17 @@ class MySQLDatabase implements DBInterface
     public function handleAddProductResponse($message)
     {
         if ($message === "Success") {
-            return ['status' => 1, 'message' => 'Record created successfully'];
-        } 
+            $res = ['status' => 1, 'message' => 'Record created successfully'];
+            echo json_encode($res);
+            return;
+        }
 
         $responseMessage = 'Failed to create record';
         if ($message === "Unique constraint violation") {
             $responseMessage = 'SKU already exists';
         }
 
-        return ['status' => 0, 'message' => $responseMessage];
+        $res = ['status' => 0, 'message' => $responseMessage];
+        echo json_encode($res);
     }
 }
