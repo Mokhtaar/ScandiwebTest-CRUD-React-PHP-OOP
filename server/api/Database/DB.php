@@ -104,9 +104,10 @@ class MySQLDatabase implements DBInterface
             $stmt = $this->conn->prepare($sql);
             $this->bindCommonProductProperties($stmt, $data);
             $stmt->bindParam(':size', $data['size']);
+
             $stmt->execute();
             $this->handleAddProductResponse("Success");
-        } catch (PDOException $e) {
+        } catch (Exception $e) {
             if ($e->getCode() === "23000") {
                 $this->handleAddProductResponse("Unique constraint violation");
             } else {
@@ -126,13 +127,4 @@ class MySQLDatabase implements DBInterface
         }
         echo json_encode($response);
     }
-    // public function execute($stmt)
-    // {
-    //     if ($stmt) {
-    //         $response = ['status' => 1, 'message' => 'Record created successfully.'];
-    //     } else {
-    //         $response = ['status' => 0, 'message' => 'Failed to create record.'];
-    //     }
-    //     echo json_encode($response);
-    // }
 }
