@@ -8,4 +8,5 @@ interface DBInterface
     public function addDVD(array $data);
     public function addBook(array $data);
     public function addFurniture(array $data);
+    public function handleAddProductResponse(string $message);
 }

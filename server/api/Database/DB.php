@@ -69,7 +69,6 @@ class MySQLDatabase implements DBInterface
             $stmt->bindParam(':weight', $data['weight']);
             $stmt->execute();
             $this->handleAddProductResponse("Success");
-
         } catch (PDOException $e) {
             if ($e->getCode() === "23000") {
                 $this->handleAddProductResponse("Unique constraint violation");
@@ -105,10 +104,9 @@ class MySQLDatabase implements DBInterface
             $stmt = $this->conn->prepare($sql);
             $this->bindCommonProductProperties($stmt, $data);
             $stmt->bindParam(':size', $data['size']);
-            echo ("hamada");
             $stmt->execute();
             $this->handleAddProductResponse("Success");
-        } catch (Exception $e) {
+        } catch (PDOException $e) {
             if ($e->getCode() === "23000") {
                 $this->handleAddProductResponse("Unique constraint violation");
             } else {
@@ -120,12 +118,14 @@ class MySQLDatabase implements DBInterface
     public function handleAddProductResponse($message)
     {
         if ($message === "Success") {
-            $response = ['status' => 1, 'message' => 'Record created successfully'];
-        } else if ($message === "Unique constraint violation") {
-            $response = ['message' => 'SKU already exists'];
-        } else {
-            $response = ['status' => 0, 'Failed to create record'];
+            return ['status' => 1, 'message' => 'Record created successfully'];
+        } 
+
+        $responseMessage = 'Failed to create record';
+        if ($message === "Unique constraint violation") {
+            $responseMessage = 'SKU already exists';
         }
-        echo json_encode($response);
+
+        return ['status' => 0, 'message' => $responseMessage];
     }
 }
