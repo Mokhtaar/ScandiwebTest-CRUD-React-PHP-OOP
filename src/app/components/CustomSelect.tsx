@@ -1,5 +1,5 @@
 import { useField } from "formik";
-import React, { FC } from "react";
+import React from "react";
 
 interface CustomInputProps {
   label: string;
@@ -9,7 +9,7 @@ interface CustomInputProps {
   children: React.ReactNode;
 }
 
-const CustomSelect: FC<CustomInputProps> = ({ label, ...props }) => {
+const CustomSelect = ({ label, ...props }: CustomInputProps) => {
   const [field, meta] = useField(props);
   return (
     <div className="mt-10 mb-5 w-80 justify-between flex">

@@ -1,30 +1,18 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { Form, Formik, useFormikContext } from "formik";
-import * as yup from "yup";
-import axios from "axios";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import axios from "axios";
+import { Form, Formik } from "formik";
 import CustomInput from "../components/CustomInput";
 import CustomSelect from "../components/CustomSelect";
-import Link from "next/link";
-
-interface FormValues {
-  type: string;
-}
-
-const FormObserver = ({ setType }: { setType: any }) => {
-  const { values } = useFormikContext<FormValues>();
-
-  useEffect(() => {
-    setType(values.type);
-  }, [values.type]);
-  return null;
-};
+import FormObserver from "../components/FormObserver";
+import ValidationSchema from "../components/ValidationSchema";
 
 const Page = () => {
   const router = useRouter();
-  const [type, setType] = useState();
-  const ex = "/[^abc]+/g";
+  const [type, setType] = useState("");
+  const [skuIsUnique, setSkuIsUnique] = useState(true);
   return (
     <div className="px-5 sm:px-12">
       <div className="pt-10 pb-16">
@@ -34,72 +22,25 @@ const Page = () => {
             name: "",
             price: "",
             type: "",
-            size: "",
-            weight: "",
-            height: "",
-            width: "",
-            length: "",
+            size: null,
+            weight: null,
+            height: null,
+            width: null,
+            length: null,
           }}
-          validationSchema={yup.object({
-            SKU: yup.string().trim().required("SKU is required"),
-            name: yup.string().required("Name is required"),
-            price: yup
-              .number()
-              .positive("Only positive values")
-              .required("Price is required"),
-            type: yup
-              .string()
-              .oneOf(["DVDdisc", "Furniture", "Book"], "Invalid product type")
-              .required("Required"),
-            size: yup.number().when("type", {
-              is: "DVDdisc",
-              then: (schema) =>
-                schema
-                  .positive("Only positive values")
-                  .required("Size is required"),
-              otherwise: (schema) => schema.notRequired(),
-            }),
-            weight: yup.number().when("type", {
-              is: "Book",
-              then: (schema) =>
-                schema
-                  .positive("Only positive values")
-                  .required("Weight is required"),
-              otherwise: (schema) => schema.notRequired(),
-            }),
-            height: yup.number().when("type", {
-              is: "Furniture",
-              then: (schema) =>
-                schema
-                  .positive("Only positive values")
-                  .required("Height is required"),
-              otherwise: (schema) => schema.notRequired(),
-            }),
-            width: yup.number().when("type", {
-              is: "Furniture",
-              then: (schema) =>
-                schema
-                  .positive("Only positive values")
-                  .required("Width is required"),
-              otherwise: (schema) => schema.notRequired(),
-            }),
-            length: yup.number().when("type", {
-              is: "Furniture",
-              then: (schema) =>
-                schema
-                  .positive("Only positive values")
-                  .required("Length is required"),
-              otherwise: (schema) => schema.notRequired(),
-            }),
-          })}
+          validationSchema={ValidationSchema}
           onSubmit={async (values) => {
             try {
               const response = await axios.post(
                 "https://backend-php-oop.vercel.app",
+                // "http://localhost/backendPHP/api/index.php",
                 values
               );
-              console.log(response.data);
-              router.push("/");
+              response.data.status === 1
+                ? (router.push("/"), console.log(response.data))
+                : response.data.message === "SKU already exists"
+                ? setSkuIsUnique(false)
+                : console.log(response.data);
             } catch (error) {
               console.log(error);
             }
@@ -128,6 +69,8 @@ const Page = () => {
             <div className="w-80 space-y-5">
               <CustomInput
                 id="sku"
+                isUnique={skuIsUnique}
+                setIsUnique={setSkuIsUnique}
                 label="SKU"
                 name="SKU"
                 type="text"

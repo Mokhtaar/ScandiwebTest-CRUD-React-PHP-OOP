@@ -1,5 +1,5 @@
 import { FieldHookConfig, useField } from "formik";
-import React, { FC } from "react";
+import React, { ChangeEvent, Dispatch, SetStateAction } from "react";
 
 interface CustomInputProps {
   label: string;
@@ -7,30 +7,55 @@ interface CustomInputProps {
   type: string;
   placeholder: string;
   id: string;
-  // pattern: string
+  isUnique?: boolean;
+  setIsUnique?: Dispatch<SetStateAction<boolean>>;
 }
 
-// const blockInvalidChar = (e: React.KeyboardEvent<HTMLInputElement>) =>
-//   ["e", "E", "+", "-"].includes(e.key) && e.preventDefault();
-
-const CustomInput: FC<CustomInputProps> = ({ label, ...props }) => {
+const CustomInput = ({ label, ...props }: CustomInputProps) => {
   const [field, meta] = useField(props);
+  const { onChange, ...restField } = field;
+
+  const handleSKUchange = (event: ChangeEvent<HTMLInputElement>) => {
+    props.setIsUnique!(true);
+    onChange(event);
+  };
+
   return (
     <div className="justify-between flex">
       <label>{label}</label>
       <div>
-        <input
-          // onKeyDown={(e) => blockInvalidChar(e)}
-          className="border-2 pl-1 border-black"
-          {...field}
-          {...props}
-        />
+        {label !== "SKU" ? (
+          <input className="border-2 pl-1 border-black" {...field} {...props} />
+        ) : (
+          <input
+            className="border-2 pl-1 border-black"
+            onChange={handleSKUchange}
+            {...restField}
+            {...props}
+          />
+        )}
+
         {meta.error && meta.touched ? (
           <p className="text-red-500 text-center">{meta.error}</p>
         ) : null}
+
+        {props.isUnique === false ? (
+          <p className="text-center text-red-500">SKU already exists</p>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
 };
 
 export default CustomInput;
+
+// const blockInvalidChar = (e: React.KeyboardEvent<HTMLInputElement>) =>
+//   ["e", "E", "+", "-"].includes(e.key) && e.preventDefault();
+
+// onChange={() => setIsUnique(true)}
+// {...(label === "SKU"
+//   ? { ...(field.onChange = () => props.setIsUnique!(true)) }
+//   : ()=>props.setIsUnique!(false))}
+// onKeyDown={(e) => blockInvalidChar(e)}

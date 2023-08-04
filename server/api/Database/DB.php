@@ -61,43 +61,78 @@ class MySQLDatabase implements DBInterface
     }
     public function addBook(array $data)
     {
-        $sql = "INSERT INTO productList(id, SKU, name, price, type, created_at, weight) VALUES (null, :SKU, :name, :price, :type, :created_at, :weight)";
-        $stmt = $this->conn->prepare($sql);
-        $this->bindCommonProductProperties($stmt, $data);
+        try {
+            $sql = "INSERT INTO productList(id, SKU, name, price, type, created_at, weight) VALUES (null, :SKU, :name, :price, :type, :created_at, :weight)";
+            $stmt = $this->conn->prepare($sql);
+            $this->bindCommonProductProperties($stmt, $data);
 
-        $stmt->bindParam(':weight', $data['weight']);
-        $stmt->execute();
-        
-        $this->execute($stmt);
+            $stmt->bindParam(':weight', $data['weight']);
+            $stmt->execute();
+            $this->handleAddProductResponse("Success");
+        } catch (PDOException $e) {
+            if ($e->getCode() === "23000") {
+                $this->handleAddProductResponse("Unique constraint violation");
+            } else {
+                $this->handleAddProductResponse("Failed");
+            }
+        }
     }
     public function addFurniture(array $data)
     {
-        $sql = "INSERT INTO productList(id, SKU, name, price, type, created_at, height, width, length) VALUES (null, :SKU, :name, :price, :type, :created_at, :height, :width, :length)";
-        $stmt = $this->conn->prepare($sql);
-        $this->bindCommonProductProperties($stmt, $data);
+        try {
+            $sql = "INSERT INTO productList(id, SKU, name, price, type, created_at, height, width, length) VALUES (null, :SKU, :name, :price, :type, :created_at, :height, :width, :length)";
+            $stmt = $this->conn->prepare($sql);
+            $this->bindCommonProductProperties($stmt, $data);
 
-        $stmt->bindParam(':height', $data['height']);
-        $stmt->bindParam(':width', $data['width']);
-        $stmt->bindParam(':length', $data['length']);
-        $stmt->execute();
-        $this->execute($stmt);
+            $stmt->bindParam(':height', $data['height']);
+            $stmt->bindParam(':width', $data['width']);
+            $stmt->bindParam(':length', $data['length']);
+            $stmt->execute();
+            $this->handleAddProductResponse("Success");
+        } catch (PDOException $e) {
+            if ($e->getCode() === "23000") {
+                $this->handleAddProductResponse("Unique constraint violation");
+            } else {
+                $this->handleAddProductResponse("Failed");
+            }
+        }
     }
     public function addDVD(array $data)
     {
-        $sql = "INSERT INTO productList(id, SKU, name, price, type, created_at, size) VALUES (null, :SKU, :name, :price, :type, :created_at, :size)";
-        $stmt = $this->conn->prepare($sql);
-        $this->bindCommonProductProperties($stmt, $data);
-        $stmt->bindParam(':size', $data['size']);
-        $stmt->execute();
-        $this->execute($stmt);
+        try {
+            $sql = "INSERT INTO productList(id, SKU, name, price, type, created_at, size) VALUES (null, :SKU, :name, :price, :type, :created_at, :size)";
+            $stmt = $this->conn->prepare($sql);
+            $this->bindCommonProductProperties($stmt, $data);
+            $stmt->bindParam(':size', $data['size']);
+            $stmt->execute();
+            $this->handleAddProductResponse("Success");
+        } catch (PDOException $e) {
+            if ($e->getCode() === "23000") {
+                $this->handleAddProductResponse("Unique constraint violation");
+            } else {
+                $this->handleAddProductResponse("Failed");
+            }
+        }
     }
-    public function execute($stmt)
+
+    public function handleAddProductResponse($message)
     {
-        if ($stmt) {
-            $response = ['status' => 1, 'message' => 'Record created successfully.'];
+        if ($message === "Success") {
+            $response = ['status' => 1, 'message' => 'Record created successfully'];
+        } else if ($message === "Unique constraint violation") {
+            $response = ['message' => 'SKU already exists'];
         } else {
-            $response = ['status' => 0, 'message' => 'Failed to create record.'];
+            $response = ['status' => 0, 'Failed to create record'];
         }
         echo json_encode($response);
     }
+    // public function execute($stmt)
+    // {
+    //     if ($stmt) {
+    //         $response = ['status' => 1, 'message' => 'Record created successfully.'];
+    //     } else {
+    //         $response = ['status' => 0, 'message' => 'Failed to create record.'];
+    //     }
+    //     echo json_encode($response);
+    // }
 }
