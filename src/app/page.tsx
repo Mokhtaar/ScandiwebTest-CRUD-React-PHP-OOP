@@ -41,7 +41,7 @@ export default function Home() {
         "https://backend-php-oop-mokhtaar.vercel.app",
         { data: checkedProducts }
       );
-      console.log("res", response);
+      console.log(response.data);
       fetchData();
     } catch (error) {
       console.log(error);
@@ -73,7 +73,7 @@ export default function Home() {
           <p className="text-2xl font-medium">Product list</p>
           <div className="space-x-3">
             <Link
-              href="./NewProduct/"
+              href="./addproduct/"
               className="bg-gray-300 hover:bg-gray-200 py-1 px-4 rounded-md"
             >
               ADD

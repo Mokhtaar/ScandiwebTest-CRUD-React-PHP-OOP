@@ -9,7 +9,7 @@ interface propType {
   setType: Dispatch<SetStateAction<string>>;
 }
 
-const FormObserver = ({ setType }: propType) => {
+const FormValuesObserver = ({ setType }: propType) => {
   const { values } = useFormikContext<FormValues>();
 
   useEffect(() => {
@@ -18,4 +18,4 @@ const FormObserver = ({ setType }: propType) => {
   return null;
 };
 
-export default FormObserver;
+export default FormValuesObserver;

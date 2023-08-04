@@ -6,7 +6,7 @@ import axios from "axios";
 import { Form, Formik } from "formik";
 import CustomInput from "../components/CustomInput";
 import CustomSelect from "../components/CustomSelect";
-import FormObserver from "../components/FormObserver";
+import FormValuesObserver from "../components/FormObserver";
 import ValidationSchema from "../components/ValidationSchema";
 
 const Page = () => {
@@ -47,7 +47,7 @@ const Page = () => {
           }}
         >
           <Form id="product_form" className="w-full">
-            <FormObserver setType={setType} />
+            <FormValuesObserver setType={setType} />
             <div className="flex justify-between">
               <p className="text-2xl font-medium">Product list</p>
               <div className="space-x-3">
