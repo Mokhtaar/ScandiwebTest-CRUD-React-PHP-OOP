@@ -54,8 +54,4 @@ export default CustomInput;
 // const blockInvalidChar = (e: React.KeyboardEvent<HTMLInputElement>) =>
 //   ["e", "E", "+", "-"].includes(e.key) && e.preventDefault();
 
-// onChange={() => setIsUnique(true)}
-// {...(label === "SKU"
-//   ? { ...(field.onChange = () => props.setIsUnique!(true)) }
-//   : ()=>props.setIsUnique!(false))}
 // onKeyDown={(e) => blockInvalidChar(e)}

@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 const ValidationSchema = yup.object({
-  SKU: yup.string().trim().required("SKU is required"),
+  SKU: yup.string().required("SKU is required"),
   name: yup.string().required("Name is required"),
   price: yup
     .number()
@@ -10,7 +10,7 @@ const ValidationSchema = yup.object({
   type: yup
     .string()
     .oneOf(["DVDdisc", "Furniture", "Book"], "Invalid product type")
-    .required("Required"),
+    .required("Type is required"),
   size: yup.number().when("type", {
     is: "DVDdisc",
     then: (schema) =>
