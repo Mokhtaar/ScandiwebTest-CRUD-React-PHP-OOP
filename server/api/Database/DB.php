@@ -70,11 +70,7 @@ class MySQLDatabase implements DBInterface
             $stmt->execute();
             $this->handleAddProductResponse("Success");
         } catch (PDOException $e) {
-            if ($e->getCode() === "23000") {
-                $this->handleAddProductResponse("Unique constraint violation");
-            } else {
-                $this->handleAddProductResponse("Failed");
-            }
+            $this->handleCatchError($e);
         }
     }
     public function addFurniture(array $data)
@@ -90,11 +86,7 @@ class MySQLDatabase implements DBInterface
             $stmt->execute();
             $this->handleAddProductResponse("Success");
         } catch (PDOException $e) {
-            if ($e->getCode() === "23000") {
-                $this->handleAddProductResponse("Unique constraint violation");
-            } else {
-                $this->handleAddProductResponse("Failed");
-            }
+            $this->handleCatchError($e);
         }
     }
     public function addDVD(array $data)
@@ -107,11 +99,7 @@ class MySQLDatabase implements DBInterface
             $stmt->execute();
             $this->handleAddProductResponse("Success");
         } catch (PDOException $e) {
-            if ($e->getCode() === "23000") {
-                $this->handleAddProductResponse("Unique constraint violation");
-            } else {
-                $this->handleAddProductResponse("Failed");
-            }
+            $this->handleCatchError($e);
         }
     }
 
@@ -130,5 +118,14 @@ class MySQLDatabase implements DBInterface
 
         $res = ['status' => 0, 'message' => $responseMessage];
         echo json_encode($res);
+    }
+
+    public function handleCatchError($e)
+    {
+        if ($e->getCode() === "23000") {
+            $this->handleAddProductResponse("Unique constraint violation");
+        } else {
+            $this->handleAddProductResponse("Failed");
+        }
     }
 }
