@@ -28,6 +28,7 @@ export default function Home() {
     try {
       const response = await axios.get(
         "https://backend-php-oop-mokhtaar.vercel.app"
+        // "http://localhost/backendPHP/api/index.php"
       );
       setProducts(response.data);
     } catch (error) {
