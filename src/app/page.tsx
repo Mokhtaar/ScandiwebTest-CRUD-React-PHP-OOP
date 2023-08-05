@@ -109,7 +109,7 @@ export default function Home() {
                   <input
                     onChange={(event) => handleCheck(event, product.SKU)}
                     type="checkbox"
-                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 delete-checkbox"
+                    className="delete-checkbox h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                   />
                 </div>
                 <h3 className="text-sm font-medium text-gray-900">
