@@ -111,7 +111,7 @@ class MySQLDatabase implements DBInterface
             return;
         }
 
-        $responseMessage = 'Failed to create record';
+        $responseMessage = $message;
         if ($message === "Unique constraint violation") {
             $responseMessage = 'SKU already exists';
         }
@@ -125,7 +125,7 @@ class MySQLDatabase implements DBInterface
         if ($e->getCode() === "23000") {
             $this->handleAddProductResponse("Unique constraint violation");
         } else {
-            $this->handleAddProductResponse("Failed");
+            $this->handleAddProductResponse("Failed to create record");
         }
     }
 }

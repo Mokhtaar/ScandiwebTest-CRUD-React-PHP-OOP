@@ -12,8 +12,8 @@ const ValidationSchema = yup.object({
     .required("Name is required"),
   price: yup
     .string()
-    .test("StartingZeroError", "Number cannot start with 0", (v) => {
-      return zeroAtStartOfStrRegex.test(v!);
+    .test("StartingZeroError", "Number cannot start with 0", (value) => {
+      return zeroAtStartOfStrRegex.test(value!);
     })
     .matches(onlyNumbersRegex, "Invalid value")
     .required("Price is required"),
@@ -25,8 +25,8 @@ const ValidationSchema = yup.object({
     is: "DVDdisc",
     then: (schema) =>
       schema
-        .test("StartingZeroError", "Number cannot start with 0", (v) => {
-          return zeroAtStartOfStrRegex.test(v!);
+        .test("StartingZeroError", "Number cannot start with 0", (value) => {
+          return zeroAtStartOfStrRegex.test(value!);
         })
         .matches(onlyNumbersRegex, "Invalid value")
         .required("Size is required"),
@@ -36,8 +36,8 @@ const ValidationSchema = yup.object({
     is: "Book",
     then: (schema) =>
       schema
-        .test("StartingZeroError", "Number cannot start with 0", (v) => {
-          return zeroAtStartOfStrRegex.test(v!);
+        .test("StartingZeroError", "Number cannot start with 0", (value) => {
+          return zeroAtStartOfStrRegex.test(value!);
         })
         .matches(onlyNumbersRegex, "Invalid value")
         .required("Weight is required"),
@@ -47,8 +47,8 @@ const ValidationSchema = yup.object({
     is: "Furniture",
     then: (schema) =>
       schema
-        .test("StartingZeroError", "Number cannot start with 0", (v) => {
-          return zeroAtStartOfStrRegex.test(v!);
+        .test("StartingZeroError", "Number cannot start with 0", (value) => {
+          return zeroAtStartOfStrRegex.test(value!);
         })
         .matches(onlyNumbersRegex, "Invalid value")
         .required("Height is required"),
@@ -58,8 +58,8 @@ const ValidationSchema = yup.object({
     is: "Furniture",
     then: (schema) =>
       schema
-        .test("StartingZeroError", "Number cannot start with 0", (v) => {
-          return zeroAtStartOfStrRegex.test(v!);
+        .test("StartingZeroError", "Number cannot start with 0", (value) => {
+          return zeroAtStartOfStrRegex.test(value!);
         })
         .matches(onlyNumbersRegex, "Invalid value")
         .required("Width is required"),
@@ -69,8 +69,8 @@ const ValidationSchema = yup.object({
     is: "Furniture",
     then: (schema) =>
       schema
-        .test("StartingZeroError", "Number cannot start with 0", (v) => {
-          return zeroAtStartOfStrRegex.test(v!);
+        .test("StartingZeroError", "Number cannot start with 0", (value) => {
+          return zeroAtStartOfStrRegex.test(value!);
         })
         .matches(onlyNumbersRegex, "Invalid value")
         .required("Length is required"),
