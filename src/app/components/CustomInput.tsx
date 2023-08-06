@@ -28,12 +28,16 @@ const CustomInput = ({
   return (
     <div className="justify-between flex">
       <label>{label}</label>
-      <div>
+      <div className="w-52">
         {label !== "SKU" ? (
-          <input className="border-2 pl-1 border-black" {...field} {...props} />
+          <input
+            className="w-full pl-1 border-2 border-black"
+            {...field}
+            {...props}
+          />
         ) : (
           <input
-            className="border-2 pl-1 border-black"
+            className="w-full pl-1 border-2 border-black"
             onChange={handleSKUchange}
             {...restField}
             {...props}

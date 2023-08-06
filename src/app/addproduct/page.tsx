@@ -110,7 +110,7 @@ const Page = () => {
                     id="size"
                     label="Size(MB)"
                     name="size"
-                    type="number"
+                    type="text"
                     placeholder="#Size"
                   />
                   <p className="pt-7 font-semibold">
@@ -123,7 +123,7 @@ const Page = () => {
                     id="weight"
                     label="Weight(KG)"
                     name="weight"
-                    type="number"
+                    type="text"
                     placeholder="#Weight"
                   />
                   <p className="pt-7 font-semibold">
@@ -136,21 +136,21 @@ const Page = () => {
                     id="height"
                     label="Height(CM)"
                     name="height"
-                    type="number"
+                    type="text"
                     placeholder="#Height"
                   />
                   <CustomInput
                     id="width"
                     label="Width(CM)"
                     name="width"
-                    type="number"
+                    type="text"
                     placeholder="#Width"
                   />
                   <CustomInput
                     id="length"
                     label="Length(CM)"
                     name="length"
-                    type="number"
+                    type="text"
                     placeholder="#Length"
                   />
                   <p className="pt-7 font-semibold">
