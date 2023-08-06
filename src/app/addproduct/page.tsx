@@ -86,7 +86,7 @@ const Page = () => {
                 id="price"
                 label="Price($)"
                 name="price"
-                type="number"
+                type="text"
                 placeholder="#Price"
               />
             </div>

@@ -1,5 +1,5 @@
-import { FieldHookConfig, useField } from "formik";
-import React, { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { useField } from "formik";
+import React, { ChangeEvent, Dispatch, SetStateAction, useEffect } from "react";
 
 interface CustomInputProps {
   label: string;
@@ -11,12 +11,17 @@ interface CustomInputProps {
   setIsUnique?: Dispatch<SetStateAction<boolean>>;
 }
 
-const CustomInput = ({ label, ...props }: CustomInputProps) => {
+const CustomInput = ({
+  label,
+  isUnique,
+  setIsUnique,
+  ...props
+}: CustomInputProps) => {
   const [field, meta] = useField(props);
   const { onChange, ...restField } = field;
 
   const handleSKUchange = (event: ChangeEvent<HTMLInputElement>) => {
-    props.setIsUnique!(true);
+    setIsUnique!(true);
     onChange(event);
   };
 
@@ -39,11 +44,13 @@ const CustomInput = ({ label, ...props }: CustomInputProps) => {
           <p className="text-red-500 text-center">{meta.error}</p>
         ) : null}
 
-        {props.isUnique === false ? (
-          <p className="text-center text-red-500">SKU already exists</p>
-        ) : (
-          ""
-        )}
+        <p
+          className={`${
+            isUnique === false ? "block" : "hidden"
+          } text-center text-red-500`}
+        >
+          SKU already exists
+        </p>
       </div>
     </div>
   );

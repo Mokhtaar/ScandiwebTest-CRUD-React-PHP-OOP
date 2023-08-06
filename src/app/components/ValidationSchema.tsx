@@ -1,9 +1,9 @@
 import * as yup from "yup";
 
-// const onlyNumbersRegex = new RegExp("[0-9]{10}([0-9]{2})?");
 // const invalidCharactersRegex = /^[+\-eE]+$/;
 
 const onlyCharacters = /^[a-zA-Z]+$/;
+const onlyNumbers = /^[0-9]+$/;
 
 const ValidationSchema = yup.object({
   SKU: yup.string().required("SKU is required"),
@@ -12,8 +12,8 @@ const ValidationSchema = yup.object({
     .matches(onlyCharacters, "Only characters are allowed")
     .required("Name is required"),
   price: yup
-    .number()
-    .positive("Only positive values")
+    .string()
+    .matches(onlyNumbers, "Only numbers are allowed")
     .required("Price is required"),
   type: yup
     .string()
@@ -23,7 +23,6 @@ const ValidationSchema = yup.object({
     is: "DVDdisc",
     then: (schema) =>
       schema.positive("Only positive values").required("Size is required"),
-    // .matches(invalidCharactersRegex, "Is not in correct format"),
     otherwise: (schema) => schema.notRequired(),
   }),
   weight: yup.number().when("type", {
