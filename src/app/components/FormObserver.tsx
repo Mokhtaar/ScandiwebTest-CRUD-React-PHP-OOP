@@ -5,11 +5,11 @@ interface FormValues {
   type: string;
 }
 
-interface propType {
+const FormValuesObserver = ({
+  setType,
+}: {
   setType: Dispatch<SetStateAction<string>>;
-}
-
-const FormValuesObserver = ({ setType }: propType) => {
+}) => {
   const { values } = useFormikContext<FormValues>();
 
   useEffect(() => {
