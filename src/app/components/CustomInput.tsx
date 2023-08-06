@@ -61,8 +61,3 @@ const CustomInput = ({
 };
 
 export default CustomInput;
-
-// const blockInvalidChar = (e: React.KeyboardEvent<HTMLInputElement>) =>
-//   ["e", "E", "+", "-"].includes(e.key) && e.preventDefault();
-
-// onKeyDown={(e) => blockInvalidChar(e)}

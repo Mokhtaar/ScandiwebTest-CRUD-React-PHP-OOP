@@ -28,7 +28,6 @@ export default function Home() {
     try {
       const response = await axios.get(
         "https://backend-php-oop-mokhtaar.vercel.app"
-        // "http://localhost/backendPHP/api/index.php"
       );
       setProducts(response.data);
     } catch (error) {
@@ -85,7 +84,6 @@ export default function Home() {
               className="bg-gray-300 hover:bg-gray-200 py-1 px-4 rounded-md"
             >
               MASS DELETE
-              {/* {checkedProducts.length > 1 ? "Mass Delete" : "Delete"} */}
             </button>
           </div>
         </div>
