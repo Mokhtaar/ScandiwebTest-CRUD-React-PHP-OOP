@@ -36,20 +36,21 @@ const CustomInput = ({
             {...props}
           />
         ) : (
-          <input
-            className="w-full pl-1 border-2 border-black"
-            onChange={handleSKUchange}
-            {...restField}
-            {...props}
-          />
+          <>
+            <input
+              className="w-full pl-1 border-2 border-black"
+              onChange={handleSKUchange}
+              {...restField}
+              {...props}
+            />
+            {!skuIsUnique && (
+              <p className="text-center text-red-500">SKU already exists</p>
+            )}
+          </>
         )}
 
         {meta.error && meta.touched ? (
           <p className="text-red-500 text-center">{meta.error}</p>
-        ) : null}
-
-        {skuIsUnique === false ? (
-          <p className="text-center text-red-500">SKU already exists</p>
         ) : null}
       </div>
     </div>
