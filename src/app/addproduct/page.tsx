@@ -67,8 +67,8 @@ const Page = () => {
               <div className="w-80 space-y-5">
                 <CustomInput
                   id="sku"
-                  isUnique={skuIsUnique}
-                  setIsUnique={setSkuIsUnique}
+                  skuIsUnique={skuIsUnique}
+                  setSkuIsUnique={setSkuIsUnique}
                   label="SKU"
                   name="SKU"
                   type="text"

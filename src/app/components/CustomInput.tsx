@@ -7,21 +7,21 @@ interface CustomInputProps {
   type: string;
   placeholder: string;
   id: string;
-  isUnique?: boolean;
-  setIsUnique?: Dispatch<SetStateAction<boolean>>;
+  skuIsUnique?: boolean;
+  setSkuIsUnique?: Dispatch<SetStateAction<boolean>>;
 }
 
 const CustomInput = ({
   label,
-  isUnique,
-  setIsUnique,
+  skuIsUnique,
+  setSkuIsUnique,
   ...props
 }: CustomInputProps) => {
   const [field, meta] = useField(props);
   const { onChange, ...restField } = field;
 
   const handleSKUchange = (event: ChangeEvent<HTMLInputElement>) => {
-    setIsUnique!(true);
+    setSkuIsUnique!(true);
     onChange(event);
   };
 
@@ -50,7 +50,7 @@ const CustomInput = ({
 
         <p
           className={`${
-            isUnique === false ? "block" : "hidden"
+            skuIsUnique === false ? "block" : "hidden"
           } text-center text-red-500`}
         >
           SKU already exists
