@@ -1,5 +1,5 @@
 import { useField } from "formik";
-import React, { ChangeEvent, Dispatch, SetStateAction, useEffect } from "react";
+import React, { ChangeEvent, Dispatch, SetStateAction } from "react";
 
 interface CustomInputProps {
   label: string;
@@ -48,13 +48,9 @@ const CustomInput = ({
           <p className="text-red-500 text-center">{meta.error}</p>
         ) : null}
 
-        <p
-          className={`${
-            skuIsUnique === false ? "block" : "hidden"
-          } text-center text-red-500`}
-        >
-          SKU already exists
-        </p>
+        {skuIsUnique === false ? (
+          <p className="text-center text-red-500">SKU already exists</p>
+        ) : null}
       </div>
     </div>
   );

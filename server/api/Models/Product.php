@@ -1,5 +1,4 @@
 <?php
-// require_once('../Database/DBInterface.php');
 require_once(__DIR__ . '/../Database/DBInterface.php');
 abstract class Product 
 {
